@@ -1,16 +1,7 @@
 # level_orm
 
-A new Flutter project.
+날씨api를 활용하여 기능구현하기
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Git branch 사용하여 ,팀 프로젝트 해보기
+<참고자료>
+https://docs.google.com/presentation/d/1SYqc4TbeONz3vqq4JP29wX7HpCRS0AfxsLhTrSILXQ8/edit#slide=id.g2cd1453437c_0_285
