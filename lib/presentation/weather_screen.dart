@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:level_orm/presentation/weather_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -53,11 +51,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
   List<Map<String, String>> toSevenDaysWeather(WeatherViewModel viewModel) {
     final List<Map<String, String>> week = [];
     if (viewModel.model != null) {
-      for (int i = 0; i < viewModel.model!.time.length; i + 24) {
+      for (int i = 0; i < viewModel.model!.time.length; i += 24) {
         Map<String, String> result = {
           'time': viewModel.model!.time[i],
           'weatherCode': getWeatherCode(viewModel.model!.weatherCode[i]),
-          'temperature_2m': '${viewModel.model!.temperature_2m}',
+          'temperature_2m': '${viewModel.model!.temperature_2m[i]}',
         };
 
         week.add(result);
@@ -143,8 +141,6 @@ Future<Position> _determinePosition() async {
   bool serviceEnabled;
   LocationPermission permission;
 
-  // Test if location services are enabled.
-  // 위치 기능을 꺼놨는지
   serviceEnabled = await Geolocator.isLocationServiceEnabled();
   if (!serviceEnabled) {
     return Future.error('Location services are disabled.');
@@ -160,12 +156,9 @@ Future<Position> _determinePosition() async {
   }
 
   if (permission == LocationPermission.deniedForever) {
-    // Permissions are denied forever, handle appropriately.
     return Future.error(
         'Location permissions are permanently denied, we cannot request permissions.');
   }
 
-  // When we reach here, permissions are granted and we can
-  // continue accessing the position of the device.
   return await Geolocator.getCurrentPosition();
 }
